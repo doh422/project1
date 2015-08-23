@@ -1,36 +1,18 @@
-#block1 input {
+.block input {
   height: 90px;
   width: 90px;
   outline: solid black;
   border: 0px;
   padding: 0px;
+  font-size: 60px;
+  text-align: center; }
 
-}
-
-#block1 {
+.block {
   height: 270px;
   width: 280px;
   outline: double;
-  display: inline-block; 
+  display: inline-block;
   padding: 0px;
-  margin-top: 0px;
-}
-
-.row1 {
-  display: inline-block; }
-
-.row2 {
-  display: inline-block; }
-
-.row3 {
-  display: inline-block; }
-
-.column1 {
-  display: inline-block; }
-
-input {
-	text-align: center;
-	font-size: 60px;
-}
+  margin-top: 0px; }
 
 /*# sourceMappingURL=stylesheet.css.map */

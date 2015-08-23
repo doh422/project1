@@ -1,36 +1,21 @@
 $blockhw: 270px;
 
-#block1 div {
-	border: 5px solid black;
-	height: 90px;
-	width: 90px;
+.block input {
+  height: 90px;
+  width: 90px;
+  outline: solid black;
+  border: 0px;
+  padding: 0px;
+  font-size: 60px;
+  text-align: center;
 }
 
-#block1 {
-	height: $blockhw;
-	width: $blockhw;
-	border: 10px solid black;
-	display: inline-block;
-}
-
-.row1 {
-	display: block;
-
-}
-
-.row2 {
-	display: block;
-}
-
-.row3 {
-	display: block;
-}
-
-.column1 {
-	display: inline-block;
-}
-
-#box1 {
-	display: inline-block;
+.block {
+  height: 270px;
+  width: 280px;
+  outline: double;
+  display: inline-block; 
+  padding: 0px;
+  margin-top: 0px;
 }
 
