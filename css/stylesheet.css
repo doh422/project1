@@ -1,0 +1,36 @@
+#block1 input {
+  height: 90px;
+  width: 90px;
+  outline: solid black;
+  border: 0px;
+  padding: 0px;
+
+}
+
+#block1 {
+  height: 270px;
+  width: 280px;
+  outline: double;
+  display: inline-block; 
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.row1 {
+  display: inline-block; }
+
+.row2 {
+  display: inline-block; }
+
+.row3 {
+  display: inline-block; }
+
+.column1 {
+  display: inline-block; }
+
+input {
+	text-align: center;
+	font-size: 60px;
+}
+
+/*# sourceMappingURL=stylesheet.css.map */
