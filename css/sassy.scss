@@ -1,8 +1,8 @@
-$blockhw: 270px;
+
 
 .block input {
-  height: 90px;
-  width: 90px;
+  height: 33%;
+  width: 32%;
   outline: solid black;
   border: 0px;
   padding: 0px;
@@ -10,12 +10,17 @@ $blockhw: 270px;
   text-align: center;
 }
 
-.block {
-  height: 270px;
-  width: 280px;
-  outline: double;
-  display: inline-block; 
-  padding: 0px;
-  margin-top: 0px;
+body {
+	text-align: center;
+	min-width: 900px;
+	background-image: url(http://www.sudoku.com/wp-content/uploads/2015/01/sudoku-web-t-2.png);
 }
 
+.block {
+	display: inline-block;
+	height: 270px;
+  	width: 30%;
+  	outline: double;
+  	padding: 0px;
+  	margin-top: 5px;
+}
