@@ -4,20 +4,26 @@
   outline: solid black;
   border: 0px;
   padding: 0px;
-  font-size: 60px;
+  font-size: 50px;
   text-align: center; }
 
 body {
   text-align: center;
   min-width: 900px;
-  background-image: url(http://www.sudoku.com/wp-content/uploads/2015/01/sudoku-web-t-2.png); }
+  background-image: url(http://www.sudoku.com/wp-content/uploads/2015/01/sudoku-web-t-2.png);
+  margin-top: 50px; }
 
 .block {
   display: inline-block;
   height: 270px;
-  width: 30%;
+  width: 25%;
   outline: double;
   padding: 0px;
   margin-top: 5px; }
+
+button {
+  font-size: 15px;
+  margin-bottom: 30px;
+  background-color: #eb5b4c; }
 
 /*# sourceMappingURL=stylesheet.css.map */

@@ -33,7 +33,7 @@ $(function(){
 
 
 	$('input').hover(function() {
-		$(this).css("background-color", "blue");
+		$(this).css("background-color", "#C8EDF8");
 		}, function() {
 		$(this).css("background-color", "white");
 		});
