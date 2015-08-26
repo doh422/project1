@@ -32,11 +32,15 @@ $('input').keypress(function(e) {
 
 
 //function that sets the sum of each box in a row to 45
-// var total = 0;
-// for (var i = 0; i < board[0].length; i ++) {
-// 	total += board[0][i]}
-// }
+// 	var total = 0;
+// 	for (var i = 0; i < board[0].length; i ++) {
+// 		total += board[0][i]}
+// 
 
+// function that highlights rows red that do not sum to 45
+// if (total !== 45) {
+// 	$('.row1').css("background-color", "red")
+// }		
 
 
 
@@ -46,6 +50,15 @@ $('input').hover(function() {
 	$(this).css("background-color", "white");
 	}
 );
+
+$('#check').click(function() {
+	for (var i = 1; i < 81; i ++){
+		if (parseInt($('#box' + i).val()) > 9){
+			alert("There is an invalid number")
+		}
+		}
+	}
+)
 
 
 
