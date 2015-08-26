@@ -47,6 +47,27 @@ $('input').keypress(function(e) {
 // if (parseInt($('#box1').val()) == board[0][y]){
 // alert("number already used")}}})
 
+var rows = [($('.row1')),
+			($('.row2')),
+			($('.row3')),
+			($('.row4')),
+			($('.row5')),
+			($('.row6')),
+			($('.row7')),
+			($('.row8')),
+			($('.row9'))]
+
+
+
+var checkForDupes = function(board){
+	var sortedArray = board.sort();
+	for (var i = 0; i < sortedArray.length - 1; i ++){
+		if (sortedArray[i] == sortedArray[i + 1] && sortedArray[i] != null){
+			return true
+		}
+	} return false	
+}
+
 
 $('input').hover(function() {
 	$(this).css("background-color", "#C8EDF8");
@@ -61,9 +82,11 @@ $('#check').click(function() {
 	 	if (parseInt($('#box' + i).val()) > 9){
 			alert("There is an invalid number")
 		}
-		}
+	} for (var i = 0; i < board.length; i ++){
+		console.log(checkForDupes(board[i]));
+		checkForDupes(board[i])
 	}
-);
+});
 
 
 
