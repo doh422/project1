@@ -42,6 +42,10 @@ $('input').keypress(function(e) {
 // 	$('.row1').css("background-color", "red")
 // }		
 
+// $('#note').click(function(){
+// for (var y = 1; y <= 8; y ++){
+// if (parseInt($('#box1').val()) == board[0][y]){
+// alert("number already used")}}})
 
 
 $('input').hover(function() {
@@ -51,14 +55,15 @@ $('input').hover(function() {
 	}
 );
 
+
 $('#check').click(function() {
-	for (var i = 1; i < 81; i ++){
-		if (parseInt($('#box' + i).val()) > 9){
+	for (var i = 1; i <= 81; i ++){
+	 	if (parseInt($('#box' + i).val()) > 9){
 			alert("There is an invalid number")
 		}
 		}
 	}
-)
+);
 
 
 
