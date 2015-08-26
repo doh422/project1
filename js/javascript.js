@@ -24,14 +24,13 @@ $('input').click(function() {
 
 
 //Enter Handler saves input's number to corresponding board location
-$('input').keypress(function(e) {
-	if (e.which == 13) {
-		console.log("enter");
-		board[curEl.attr("data-row")][curEl.attr("data-col")] = parseInt(curEl.val())
-}})
+$('input').change(function() {
+	board[curEl.attr("data-row")][curEl.attr("data-col")] = parseInt(curEl.val())
+	}
+)
 
 
-//function that sets the sum of each box in a row to 45
+//function that sets the sum of each box in a row
 // 	var total = 0;
 // 	for (var i = 0; i < board[0].length; i ++) {
 // 		total += board[0][i]}
@@ -46,17 +45,6 @@ $('input').keypress(function(e) {
 // for (var y = 1; y <= 8; y ++){
 // if (parseInt($('#box1').val()) == board[0][y]){
 // alert("number already used")}}})
-
-var rows = [($('.row1')),
-			($('.row2')),
-			($('.row3')),
-			($('.row4')),
-			($('.row5')),
-			($('.row6')),
-			($('.row7')),
-			($('.row8')),
-			($('.row9'))]
-
 
 
 var checkForDupes = function(board){
