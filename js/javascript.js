@@ -50,7 +50,7 @@ $('input').change(function() {
 var checkForDupes = function(board){
 	var sortedArray = board.sort();
 	for (var i = 0; i < sortedArray.length - 1; i ++){
-		if (sortedArray[i] == sortedArray[i + 1] && sortedArray[i] != null){
+		if (sortedArray[i] == sortedArray[i + 1] && Number.isInteger(sortedArray[i])){
 			alert("Number is already being used");
 			return true;
 		}				
@@ -60,11 +60,11 @@ var checkForDupes = function(board){
 
 //following code transposes column values into an array
 var colArray = [];
-var identifyCol = function(){
+var identifyCol = function(sortCol){
 	for (var i = 1; i <= 73; i += 9) {
 		colArray.push(parseInt($('#box' + i).val()));
-		console.log(colArray);
-		console.log(i);
+		// console.log(colArray);
+		// console.log(i);
 	}
 }
 
@@ -78,6 +78,16 @@ var sortCol = function(colArray){
 			return true;
 		}
 	} return false;
+}
+
+var identifyBlock = function(){
+	var fieldsetArray = []
+	$('#block1').children().each(
+		function( index, elm ) {
+			var num = parseInt($(elm).val());
+			fieldsetArray.push(num)
+	}); 
+		return fieldsetArray;
 }
 
 
@@ -95,14 +105,14 @@ $('#check').click(function() {
 			alert("There is an invalid number")
 		}
 	} for (var i = 0; i < board.length; i ++){
-		console.log(checkForDupes(board[i]));
+		// console.log(checkForDupes(board[i]));
 	    checkForDupes(board[i]);
-	} for (var i = 0; i < 9	; i ++){
-		console.log(sortCol(colArray));
-		sortCol(colArray);
-	}
-		identifyCol();
-});	
+	} identifyCol();
+	for (var i = 0; i < 9; i ++){
+	// console.log(sortCol(colArray));
+	sortCol(colArray);
+	} console.log(identifyBlock());
+});		
 
 
 
