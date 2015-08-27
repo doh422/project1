@@ -23,7 +23,7 @@ $('input').click(function() {
 })
 
 
-//Enter Handler saves input's number to corresponding board location
+//change Handler saves input's number to corresponding board location
 $('input').change(function() {
 	board[curEl.attr("data-row")][curEl.attr("data-col")] = parseInt(curEl.val())
 	}
@@ -51,9 +51,17 @@ var checkForDupes = function(board){
 	var sortedArray = board.sort();
 	for (var i = 0; i < sortedArray.length - 1; i ++){
 		if (sortedArray[i] == sortedArray[i + 1] && sortedArray[i] != null){
-			return true
-		}
-	} return false	
+			alert("Number is already being used");
+			return true;
+		}				
+	} return false;
+}
+
+var identifyCol = function(){
+	var colArray = [];
+	for (var i = 0; i <= 73; i += 9) {
+		colArray.push(parseInt($('.column' + i).val()))
+	}
 }
 
 
@@ -72,9 +80,9 @@ $('#check').click(function() {
 		}
 	} for (var i = 0; i < board.length; i ++){
 		console.log(checkForDupes(board[i]));
-		checkForDupes(board[i])
+	    checkForDupes(board[i]);
 	}
-});
+});	
 
 
 
