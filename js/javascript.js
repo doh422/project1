@@ -10,85 +10,106 @@ var board = [[null,null,null,null,null,null,null,null,null],
 
 
 
-var curEl;
+//var curEl;
 
 //click saves input's row & column
 $('input').click(function() {
-	curEl = $(this);
+	//curEl = $(this);
     var curRow = $(this).attr("data-row");
     var curCol = $(this).attr("data-col");
 
-    console.log("got indices: row " + curRow);
-    console.log("got indices: col " + curCol);
+    // console.log("got indices: row " + curRow);
+    // console.log("got indices: col " + curCol);
 })
 
 
 //change Handler saves input's number to corresponding board location
 $('input').change(function() {
+	var curEl = $(this);
+	console.log(curEl.attr("data-row"), curEl.attr("data-col"));
+	console.log(parseInt(curEl.val()));
 	board[curEl.attr("data-row")][curEl.attr("data-col")] = parseInt(curEl.val())
 	}
 )
 
 
 //function that sets the sum of each box in a row
-// 	var total = 0;
-// 	for (var i = 0; i < board[0].length; i ++) {
-// 		total += board[0][i]}
-// 
+var sumArray = function(array) {
+	var sum = 0;
+	for (var i = 0; i < array.length; i ++){
+		sum += array[i];
+	} return sum;
+}
 
-// function that highlights rows red that do not sum to 45
-// if (total !== 45) {
-// 	$('.row1').css("background-color", "red")
-// }		
+//function makes sure sum of boxes is 45
+var isComplete = function(array) {
+	var sum = sumArray(array);
+	if (sum !== 45) {
+		alert("Incomplete");
+	} return sum === 45;
+}
+	
 
-// $('#note').click(function(){
-// for (var y = 1; y <= 8; y ++){
-// if (parseInt($('#box1').val()) == board[0][y]){
-// alert("number already used")}}})
-
-
-var checkForDupes = function(board){
-	var sortedArray = board.sort();
+//following function runs array thru sorting numbers and comparing for any matches
+var checkForDupes = function(array){
+	var local = array.slice(0, array.length - 1);
+	var sortedArray = local.sort();
 	for (var i = 0; i < sortedArray.length - 1; i ++){
 		if (sortedArray[i] == sortedArray[i + 1] && Number.isInteger(sortedArray[i])){
 			alert("Number is already being used");
 			return true;
-		}				
+		} 			
 	} return false;
 }
 
-
-//following code transposes column values into an array
-var colArray = [];
-var identifyCol = function(sortCol){
-	for (var i = 1; i <= 73; i += 9) {
-		colArray.push(parseInt($('#box' + i).val()));
-		// console.log(colArray);
-		// console.log(i);
-	}
+//following function grabs numbers in each column and pushes to an array
+var getColumns = function(){
+	var cols = [];
+	var columnCount = 0;
+	while (columnCount < 9){
+		var col = [];
+		var row = 0;
+		while (row < 9) {
+			col.push(board[row][columnCount]);
+			row ++;
+		} cols.push(col);
+			columnCount ++;
+	} return cols;
 }
 
 
-//following code sorts column array
-var sortCol = function(colArray){
-	var sortedCol = colArray.sort();
-	for (var i = 0; i < 9; i ++) {
-		if (sortedCol[i] == sortedCol[i + 1] && sortedCol[i] != null){
-			alert("Number is already being used");
-			return true;
-		}
-	} return false;
-}
-
-var identifyBlock = function(){
-	var fieldsetArray = []
-	$('#block1').children().each(
+//following code grabs children elements within 3x3 block and places in array
+var identifyBlock = function(elm){
+	var fieldsetArray = [];
+	$(elm).children().each(
 		function( index, elm ) {
 			var num = parseInt($(elm).val());
 			fieldsetArray.push(num)
-	}); 
+		})
 		return fieldsetArray;
 }
+
+//following code jumps between each 3x3 block while calling above function 
+//creating an array of arrays 
+var getBlocks = function(){
+	var blocks = [];
+	$('.block').each(function(index,elm) {
+		var block = identifyBlock(elm);
+		blocks.push(block);
+	}); return blocks;
+}
+
+// var sortBlock = function(fieldsetArray){
+// 	var sortedBlock = fieldsetArray.sort();
+// 	for (var i = 0; i < fieldsetArray.length; i ++){
+// 		if (sortedBlock[i] == sortedBlock[i + 1] && Number.isInteger(sortedBlock[i])){
+// 			alert("Number is already being used");
+// 			return true;
+// 		}
+// 	} return false;
+// }
+
+
 
 
 $('input').hover(function() {
@@ -104,14 +125,39 @@ $('#check').click(function() {
 	 	if (parseInt($('#box' + i).val()) > 9){
 			alert("There is an invalid number")
 		}
-	} for (var i = 0; i < board.length; i ++){
-		// console.log(checkForDupes(board[i]));
+	}
+
+	// Checking for duplicates across rows
+	for (var i = 0; i < board.length; i ++){
+	    console.log('row: ' + board[i]);
 	    checkForDupes(board[i]);
-	} identifyCol();
-	for (var i = 0; i < 9; i ++){
-	// console.log(sortCol(colArray));
-	sortCol(colArray);
-	} console.log(identifyBlock());
+	    console.log(isComplete(board[i]));
+
+
+	    //sortedArray = [];
+	} 
+	var columns = getColumns();
+	console.log(columns)
+		for (var i = 0; i < columns.length; i ++){
+	    console.log('row: ' + columns[i]);
+	    checkForDupes(columns[i]);
+	    // isComplete(columns[i]);
+	}
+	var blocks = getBlocks();
+		for (var i = 0; i < blocks.length; i ++){
+	    console.log('row: ' + blocks[i]);
+	    checkForDupes(blocks[i]);
+
+	}
+
+	//identifyCol();
+	// for (var i = 0; i < 9; i ++){
+		//sortCol(colArray);{
+		//colArray = [];
+	//} identifyBlock();
+		//sortBlock(fieldsetArray);
+		//console.log(fieldsetArray);
+		//fieldsetArray = [];
 });		
 
 
