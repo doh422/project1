@@ -57,11 +57,27 @@ var checkForDupes = function(board){
 	} return false;
 }
 
+
+//following code transposes column values into an array
+var colArray = [];
 var identifyCol = function(){
-	var colArray = [];
-	for (var i = 0; i <= 73; i += 9) {
-		colArray.push(parseInt($('.column' + i).val()))
+	for (var i = 1; i <= 73; i += 9) {
+		colArray.push(parseInt($('#box' + i).val()));
+		console.log(colArray);
+		console.log(i);
 	}
+}
+
+
+//following code sorts column array
+var sortCol = function(colArray){
+	var sortedCol = colArray.sort();
+	for (var i = 0; i < 9; i ++) {
+		if (sortedCol[i] == sortedCol[i + 1] && sortedCol[i] != null){
+			alert("Number is already being used");
+			return true;
+		}
+	} return false;
 }
 
 
@@ -81,7 +97,11 @@ $('#check').click(function() {
 	} for (var i = 0; i < board.length; i ++){
 		console.log(checkForDupes(board[i]));
 	    checkForDupes(board[i]);
+	} for (var i = 0; i < 9	; i ++){
+		console.log(sortCol(colArray));
+		sortCol(colArray);
 	}
+		identifyCol();
 });	
 
 
