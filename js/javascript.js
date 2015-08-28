@@ -48,10 +48,10 @@ var sumArray = function(array) {
 	} return sum;
 }
 
-//function makes sure sum of boxes is 45
+//function makes 	sure sum of boxes is 45
 var isComplete = function(array) {
 	var sum = sumArray(array);
-	if ((sum !== 45) && Number.isInteger(array)){	
+	if ((sum !== 45) && Number.isInteger(array)){
 		alert("Incomplete");
 	} return sum === 45;
 }
@@ -65,7 +65,7 @@ var checkForDupes = function(array){
 		if (sortedArray[i] == sortedArray[i + 1] && Number.isInteger(sortedArray[i])){
 			alert("Number is already being used");
 			return true;
-		} 			
+		}			
 	} return false;
 }
 
@@ -139,7 +139,7 @@ $('#check').click(function() {
 		for (var i = 0; i < blocks.length; i ++){
 	    console.log('row: ' + blocks[i]);
 	    checkForDupes(blocks[i]);
-	    isComplete(columns[i]);
+	    isComplete(blocks[i]);
 	}
 
 });		
