@@ -25,6 +25,7 @@ $('input').click(function() {
 var counter = 1;
 
 //change Handler saves input's number to corresponding board location
+//will also count input changes for counter and color inputs blue
 $('input').change(function() {
 	$('#score').text(counter++);
 	var curEl = $(this);
@@ -50,7 +51,7 @@ var sumArray = function(array) {
 //function makes sure sum of boxes is 45
 var isComplete = function(array) {
 	var sum = sumArray(array);
-	if (sum !== 45) {
+	if ((sum !== 45) && Number.isInteger(array)){	
 		alert("Incomplete");
 	} return sum === 45;
 }
@@ -63,7 +64,6 @@ var checkForDupes = function(array){
 	for (var i = 0; i < sortedArray.length - 1; i ++){
 		if (sortedArray[i] == sortedArray[i + 1] && Number.isInteger(sortedArray[i])){
 			alert("Number is already being used");
-
 			return true;
 		} 			
 	} return false;
