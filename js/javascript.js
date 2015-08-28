@@ -22,9 +22,11 @@ $('input').click(function() {
     // console.log("got indices: col " + curCol);
 })
 
+var counter = 1;
 
 //change Handler saves input's number to corresponding board location
 $('input').change(function() {
+	$('#score').text(counter++);
 	var curEl = $(this);
 	console.log(curEl.attr("data-row"), curEl.attr("data-col"));
 	console.log(parseInt(curEl.val()));
@@ -33,6 +35,9 @@ $('input').change(function() {
 	}
 )
 
+$('#new').click(function() {
+	location = location;
+})
 
 //function that sets the sum of each box in a row
 var sumArray = function(array) {
@@ -58,6 +63,7 @@ var checkForDupes = function(array){
 	for (var i = 0; i < sortedArray.length - 1; i ++){
 		if (sortedArray[i] == sortedArray[i + 1] && Number.isInteger(sortedArray[i])){
 			alert("Number is already being used");
+
 			return true;
 		} 			
 	} return false;
@@ -127,17 +133,16 @@ $('#check').click(function() {
 		for (var i = 0; i < columns.length; i ++){
 	    console.log('row: ' + columns[i]);
 	    checkForDupes(columns[i]);
-	    // isComplete(columns[i]);
+	    isComplete(columns[i]);
 	}
 	var blocks = getBlocks();
 		for (var i = 0; i < blocks.length; i ++){
 	    console.log('row: ' + blocks[i]);
 	    checkForDupes(blocks[i]);
-	    // isComplete(columns[i]);
+	    isComplete(columns[i]);
 	}
 
 });		
-
 
 //timer code
 var timer = 120;
@@ -145,24 +150,10 @@ var timer = 120;
 var interval = setInterval(function(){
 	timer--;	
 	$('#timer').text(timer);
-	if (timer === 0) clearInterval(interval);
-}, 1000);
+	if (timer === 0) 
+		clearInterval(interval);
+		// var sound = new Audio("gameover.mp3");
+		// sound.play();
+}, 1000)
 
-// function startTime(timerID, time) {
-// 	timerID = document.getElementById('txt');
-// 	totalSeconds = time;
-// }
-
-// function updateTimer(){
-// 	window.setTimeout("tick()", 1000);
-// }
-
-// function tick() {
-// 	totalSeconds -= 1;
-// 	updateTimer()
-// 	window.setTimeout("tick()", 1000);
-// }
-
-// function updateTimer() {
-// 	timerID.innerHTML = totalSeconds;
-// }
+	
