@@ -26,4 +26,11 @@ button {
   margin-bottom: 30px;
   background-color: #eb5b4c; }
 
+div {
+  margin: auto;
+  height: 30px;
+  width: 100px;
+  background-color: #eb5b4c;
+  font-size: x-large; }
+
 /*# sourceMappingURL=stylesheet.css.map */

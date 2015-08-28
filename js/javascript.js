@@ -1,12 +1,12 @@
-var board = [[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null],
-		 	[null,null,null,null,null,null,null,null,null]]
+var board = [[null,null,null,null,null,null,null,null,2],
+		 	[null,5,null,8,null,3,null,7,null],
+		 	[null,null,2,5,6,null,null,1,null],
+		 	[3,null,5,1,null,null,7,null,null],
+		 	[null,null,null,null,7,null,null,null,null],
+		 	[null,null,4,null,null,5,2,null,9],
+		 	[null,4,null,null,5,2,1,null,null],
+		 	[null,9,null,6,null,8,null,3,null],
+		 	[5,null,null,null,null,null,null,null,null]]
 
 
 
@@ -28,7 +28,8 @@ $('input').change(function() {
 	var curEl = $(this);
 	console.log(curEl.attr("data-row"), curEl.attr("data-col"));
 	console.log(parseInt(curEl.val()));
-	board[curEl.attr("data-row")][curEl.attr("data-col")] = parseInt(curEl.val())
+	board[curEl.attr("data-row")][curEl.attr("data-col")] = parseInt(curEl.val());
+	$(this).css("color","blue");
 	}
 )
 
@@ -50,7 +51,7 @@ var isComplete = function(array) {
 }
 	
 
-//following function runs array thru sorting numbers and comparing for any matches
+//following function runs array thru, sorting numbers and comparing for any matches
 var checkForDupes = function(array){
 	var local = array.slice(0, array.length - 1);
 	var sortedArray = local.sort();
@@ -99,18 +100,6 @@ var getBlocks = function(){
 	}); return blocks;
 }
 
-// var sortBlock = function(fieldsetArray){
-// 	var sortedBlock = fieldsetArray.sort();
-// 	for (var i = 0; i < fieldsetArray.length; i ++){
-// 		if (sortedBlock[i] == sortedBlock[i + 1] && Number.isInteger(sortedBlock[i])){
-// 			alert("Number is already being used");
-// 			return true;
-// 		}
-// 	} return false;
-// }
-
-
-
 
 $('input').hover(function() {
 	$(this).css("background-color", "#C8EDF8");
@@ -132,9 +121,6 @@ $('#check').click(function() {
 	    console.log('row: ' + board[i]);
 	    checkForDupes(board[i]);
 	    console.log(isComplete(board[i]));
-
-
-	    //sortedArray = [];
 	} 
 	var columns = getColumns();
 	console.log(columns)
@@ -147,18 +133,36 @@ $('#check').click(function() {
 		for (var i = 0; i < blocks.length; i ++){
 	    console.log('row: ' + blocks[i]);
 	    checkForDupes(blocks[i]);
-
+	    // isComplete(columns[i]);
 	}
 
-	//identifyCol();
-	// for (var i = 0; i < 9; i ++){
-		//sortCol(colArray);{
-		//colArray = [];
-	//} identifyBlock();
-		//sortBlock(fieldsetArray);
-		//console.log(fieldsetArray);
-		//fieldsetArray = [];
 });		
 
 
+//timer code
+var timer = 120;
 
+var interval = setInterval(function(){
+	timer--;	
+	$('#timer').text(timer);
+	if (timer === 0) clearInterval(interval);
+}, 1000);
+
+// function startTime(timerID, time) {
+// 	timerID = document.getElementById('txt');
+// 	totalSeconds = time;
+// }
+
+// function updateTimer(){
+// 	window.setTimeout("tick()", 1000);
+// }
+
+// function tick() {
+// 	totalSeconds -= 1;
+// 	updateTimer()
+// 	window.setTimeout("tick()", 1000);
+// }
+
+// function updateTimer() {
+// 	timerID.innerHTML = totalSeconds;
+// }
